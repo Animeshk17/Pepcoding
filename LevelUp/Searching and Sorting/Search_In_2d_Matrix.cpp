@@ -13,16 +13,24 @@ bool binarySearch(int* arr, int low, int high, int target){
     return false;
 }
 
+int binarySearchRow(int** matrix, int row, int col, int target){
+    
+    int low = 0, high = row-1;
+    
+    while(low<=high){
+        int mid = low + (high-low)/2;
+        if(matrix[mid][0] <= target && matrix[mid][col-1]>=target) return mid;
+        else if(matrix[mid][0] < target) low = mid+1;
+        else high = mid - 1;
+    }
+
+    return -1;
+}
+
 bool searchInMatrix(int** matrix, int m, int n, int target){
 
-    int possibleRow = -1;
-
-    for(int i = 0; i<m; i++){
-        if(matrix[i][0]<=target && matrix[i][n-1]>=target){
-            possibleRow = i;
-            break;
-        }
-    }
+    int possibleRow = binarySearchRow(matrix,m,n,target);
+    
 
     if(possibleRow==-1) return false;
     return binarySearch(matrix[possibleRow],0,n,target);
@@ -30,7 +38,6 @@ bool searchInMatrix(int** matrix, int m, int n, int target){
 }
 
 int main(){
-    
     int n,m;
     cin>>m>>n;
     
