@@ -1,6 +1,21 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+int findPivotIndexInConstantSpace(int* arr, int n){
+
+    int totalArraySum = 0, leftSum = 0;
+    for(int i = 0; i<n; i++){
+        totalArraySum += arr[i];
+    }
+    
+    for(int i = 0; i<n; leftSum += arr[i++]){
+        if(totalArraySum - leftSum - arr[i] == leftSum) return i;
+        
+    }
+    
+    return -1;
+}
+
 int findPivotIndex(int* arr, int n){
 
     int* prefixSum = new int[n];
