@@ -50,10 +50,11 @@ int main()
 
 
 
+
 /*
 This algorithm is used to find integral solutions of the equation: ax + by = gcd(a,b)
 
-By reversing the steps in the Euclidean algorithm, it is possible to find these integers a and b. 
+By reversing the steps in the Euclidean algorithm, it is possible to find these integers x and y. 
 The whole idea is to start with the GCD and recursively work our way backwards. 
 This can be done by treating the numbers as variables until we end up with an expression that is a linear combination of our initial numbers. 
 
