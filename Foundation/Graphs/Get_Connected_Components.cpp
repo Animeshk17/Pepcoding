@@ -37,7 +37,7 @@ class Edge{
     }
 };
 
-void getDfs(vector<vector<Edge>> graph, int startVertex, vector<bool> & visited,vector<int>& allConnectedComponents){
+void getDfs(vector<vector<Edge>>& graph, int startVertex, vector<bool> & visited,vector<int>& allConnectedComponents){
     
     visited[startVertex] = true;
     allConnectedComponents.push_back(startVertex);
@@ -51,7 +51,7 @@ void getDfs(vector<vector<Edge>> graph, int startVertex, vector<bool> & visited,
     return ;
 }
 
-void getConnectedComponents(vector<vector<Edge>> graph, int vertices, vector<bool> visited,  vector<vector<int>>& allConnectedComponents){
+void getConnectedComponents(vector<vector<Edge>>& graph, int vertices, vector<bool>& visited,  vector<vector<int>>& allConnectedComponents){
 
     for(int i = 0; i<vertices; i++){
         vector<int> currComponent;
