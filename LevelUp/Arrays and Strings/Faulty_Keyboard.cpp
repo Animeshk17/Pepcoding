@@ -2,19 +2,16 @@
 using namespace std;
 
 bool check(string& name , string& typedName){
-
+    
     int i = 0, j = 0;
 
-    while(i < name.size() && j < typedName.size()){
-        if(name[i] == typedName[j]){
-            i++;
-            j++;
-        }else{
-            j++;
-        }
+    while (j < typedName.size()) {
+        if (i < name.size() && name[i] == typedName[j]) ++i, ++j;
+        else if (i > 0 && name[i - 1] == typedName[j]) ++j;
+        else return false;
     }
-
-    return (i==name.size());
+    
+    return i == name.size();
 }
 
 
