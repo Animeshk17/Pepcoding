@@ -25,12 +25,16 @@ typedef pair<int,int> pii;
 int getMaxWaterInContainer(vector<int>& a, int n){
 
     int ans = intmin;
+    int i = 0, j = n-1;
 
-    for(int i = 0; i<n; i++){
-        for(int j = i+1; j<n; j++){
-            int curr = (j - i) * min(a[i] , a[j]);
-            ans = max(curr, ans);
-        }
+    while(i < j){
+        
+        int curr = (j - i) * min(a[i] , a[j]);
+        ans = max(curr, ans);
+
+        if(a[i] <= a[j]) i++;
+        else j--;
+
     }
 
     return ans;
@@ -39,7 +43,7 @@ int getMaxWaterInContainer(vector<int>& a, int n){
 int main(){
 
     fastIO
-    
+
     int n;
     cin>>n;
     
