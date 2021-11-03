@@ -5,15 +5,24 @@ int doPartition(vector<int>& a, int n){
 
     int ans = 0; 
 
-    for(int i = 0; i<n-2; i++){
+    vector<int> minmToTheRight(n+1);
+    minmToTheRight[n] = INT_MAX;
 
-        int smallers = 0;
+    for(int i = n-1; i>=0; i--){
+        minmToTheRight[i] = min(minmToTheRight[i+1], a[i]);
+    }
 
-        for(int j = i+1; j<n; j++){
-            if(a[j] < a[i]) smallers++;
+    int maxSoFar = INT_MIN;
+
+    for(int i = 0; i<n-1; i++){
+
+        maxSoFar = max(maxSoFar, a[i]);
+
+        if(maxSoFar < minmToTheRight[i+1]){
+            ans = i+1;
+            break;
         }
 
-        if(smallers == 0) ans = i+1;
     }
 
     return ans;
